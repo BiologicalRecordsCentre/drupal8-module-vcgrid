@@ -1,0 +1,33 @@
+<?php
+/**
+ * Implements hook_prepare().
+ */
+
+use \Drupal\Core\Routing\RouteMatchInterface;
+
+function vcgrid_help($route_name, RouteMatchInterface $route_match) {
+  $output = '';
+  switch ($route_name) {
+    case 'help.page.vcgrid':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Display VC grid map with square based on selected counties.');
+      return $output;
+  }
+  return $output;
+}
+  /**
+   * Implements hook_theme.
+*/
+  function vcgrid_theme($existing, $type, $theme, $path) {
+    return array(
+        'vcgrid_response' => array(
+            'variables' => array(
+                'resolution' => null,
+                'vc_number' => null,
+                'vice_county' => null,
+                'squares' => null,
+            ),
+          ),
+   );
+  }

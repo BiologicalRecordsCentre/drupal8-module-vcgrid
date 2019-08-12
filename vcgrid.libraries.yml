@@ -1,0 +1,7 @@
+vc_grid:
+  version: 1.x
+  css:
+    component:
+      css/vcgrid.css: {}
+  js:
+    js/vcgrid.js: {}

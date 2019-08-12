@@ -1,0 +1,7 @@
+vcgrid.form:
+  path: '/vcgrid'
+  defaults:
+    _form: '\Drupal\vcgrid\Form\VcgridForm'
+    _title: 'VC Grid Squares Request'
+  requirements:
+    _permission: 'access content'

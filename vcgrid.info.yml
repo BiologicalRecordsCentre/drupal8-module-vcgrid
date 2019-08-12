@@ -1,0 +1,6 @@
+name: VC Grid Squares
+description: Provides a listing of grid squares in a vice county.
+type: module
+package: Custom
+version: 8.x-1.x
+core: 8.x

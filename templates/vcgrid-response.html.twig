@@ -1,0 +1,52 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a vcgrid response.
+ *
+ * Available variables:
+ * - $resolution: 10, 2 or 1. The grid wauare size in km.
+ * - $vice_county: The name of the vice county for which squared have been generated.
+ * - $vc_number: The vice county number
+ * - $squares: Array of grid squares.
+ */
+ #}
+
+<h2>{{ resolution }}km squares for {{ vice_county }}</h2>
+
+<p>These are the {{ resolution }}km British National Grid squares
+that overlap {{ vice_county }}. Also shown is the percentage area of the
+square on land and in the sea (if it doesn't add up to 100% it is because
+some of the square is in another vice county).</p>
+
+<p>These data were calculated by intersecting the British
+{{ resolution }}km grid squares with the National Biodiversity Network's
+<a href="http://www.nbn.org.uk/SpecialPages/WVCB-download.aspx">Watsonian
+Vice County boundaries</a> (version 7).</p>
+{% set filename = vice_county-resolution %}
+<table>
+  <tr>
+    {% if vc_number == 0 %}
+      <th>VC</th>
+    {% endif %}
+    <th>Square</th>
+    <th>% Land</th>
+    <th>% Sea</th>
+  </tr>
+   {# /* Loop through grid squares in table */ #}
+   {% set odd = TRUE %}
+   {% for row in squares %}
+    {%  if odd %}
+       <tr class="odd">
+      {%  else %}
+       <tr class="even">
+      {%  endif %}
+   {% set odd = FALSE %}
+   {% if vc_number == 0 %}
+       <td>{{ row.vc_key }}</td>
+      {% endif %}
+     <td>{{ row.gridref }}</td>
+     <td>{{ row.percent_land }}</td>
+     <td>{{ row.percent_sea }}</td>
+     </tr>
+   {% endfor %}
+</table>
