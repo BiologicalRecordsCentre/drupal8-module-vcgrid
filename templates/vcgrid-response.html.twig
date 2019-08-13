@@ -22,10 +22,9 @@ some of the square is in another vice county).</p>
 {{ resolution }}km grid squares with the National Biodiversity Network's
 <a href="http://www.nbn.org.uk/SpecialPages/WVCB-download.aspx">Watsonian
 Vice County boundaries</a> (version 7).</p>
-{% set filename = vice_county-resolution %}
 <table>
   <tr>
-    {% if vc_number == 0 %}
+    {% if vc_number == "0" %}
       <th>VC</th>
     {% endif %}
     <th>Square</th>
